@@ -4,14 +4,14 @@ import { arbSigner } from "../networks";
 
 async function main() {
   console.log(
-    `TKN balance for Arb ${arbSigner.address}: ${ethers.utils.formatUnits(
+    `Arb TKN balance: ${arbSigner.address}: ${ethers.utils.formatUnits(
       await arbTestToken.balanceOf(arbSigner.address)
-    )} TKN`
+    )}`
   );
   console.log(
-    `TKN total supply on Arb: ${ethers.utils.formatUnits(
+    `Arb TKN total supply: ${ethers.utils.formatUnits(
       await arbTestToken.totalSupply()
-    )} TKN`
+    )}`
   );
 }
 

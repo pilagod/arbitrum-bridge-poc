@@ -13,7 +13,7 @@ const ethTestToken = new ethers.Contract(
 ) as TestToken;
 
 const arbTestToken = new ethers.Contract(
-  "0x9a44974f48f2af569610b0b594f32a7e91c7ce30",
+  "0xD407792A878E1225cf10221003074372b457d165",
   TestTokenABI,
   arbSigner
 ) as TestToken;
