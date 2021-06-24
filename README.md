@@ -12,6 +12,16 @@ yarn build
 
 ## Settings
 
+### Arbitrum Testnet
+
+- Network Name: Arbitrum Testnet
+- RPC URL: [https://rinkeby.arbitrum.io/rpc](https://rinkeby.arbitrum.io/rpc)
+- ChainID: 421611
+- Symbol: ETH
+- Block Explorer URL: [https://rinkeby-explorer.arbitrum.io/#/](https://rinkeby.arbitrum.io/rpc)
+
+More info at: [https://developer.offchainlabs.com/docs/public_testnet](https://developer.offchainlabs.com/docs/public_testnet)
+
 ### Environment Variables
 
 There are 3 environment variables required in `.env` prior to executing commands, which listed in `.env.example`:
