@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@deployments/*": ["deployments/*"],
+      "@typechain": ["typechain"]
+    }
+  },
+  "include": ["hardhat.config.ts", "artifacts", "deploy", "scripts"],
+  "exclude": ["node_modules"]
+}
