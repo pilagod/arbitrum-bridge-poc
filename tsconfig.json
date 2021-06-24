@@ -13,6 +13,6 @@
       "@typechain": ["typechain"]
     }
   },
-  "include": ["hardhat.config.ts", "artifacts", "deploy", "scripts"],
+  "include": ["*.ts", "artifacts", "deploy", "scripts"],
   "exclude": ["node_modules"]
 }

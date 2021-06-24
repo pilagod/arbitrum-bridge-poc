@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
-import { ethTestToken, getBridge } from "../networks";
+import { ethTestToken } from "../contracts";
+import { getBridge } from "../networks";
 
 async function main() {
   const bridge = await getBridge();
@@ -8,7 +9,8 @@ async function main() {
   const tokenData = await bridge.getAndUpdateL2TokenData(ethTestToken.address);
   const { balance, contract } = tokenData!.ERC20!;
   console.log(`L2 balance: `, ethers.utils.formatUnits(balance));
-  console.log(`L2 contract: `, contract);
+  console.log(`L2 contract interface:`);
+  console.log(Object.keys(contract.interface.functions).join("\n"));
 }
 
 main().then(() => {

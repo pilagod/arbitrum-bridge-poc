@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
-import { arbSigner, ethSigner, ethTestToken, getBridge } from "../networks";
+import { ethTestToken } from "../contracts";
+import { arbSigner, ethSigner, getBridge } from "../networks";
 
 async function main() {
   const bridge = await getBridge();

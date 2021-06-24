@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
-import { arbSigner, arbTestToken } from "../networks";
+import { arbTestToken } from "../contracts";
+import { arbSigner } from "../networks";
 
 async function main() {
   console.log(

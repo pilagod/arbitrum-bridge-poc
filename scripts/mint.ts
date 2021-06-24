@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
-import { ethSigner, ethTestToken } from "../networks";
+import { ethTestToken } from "../contracts";
+import { ethSigner } from "../networks";
 
 async function main() {
   console.log(`Mint 10 TKN for Eth ${ethSigner.address}`);
