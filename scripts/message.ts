@@ -45,6 +45,17 @@ async function main() {
     await bridge.getOutGoingMessageState(batchNumber, batchIndex);
 
   console.log("message state:", OutgoingMessageState[messageState]);
+
+  try {
+    const messageProof = await BridgeHelper.tryGetProofOnce(
+      batchNumber,
+      batchIndex,
+      arbProvider
+    );
+    console.log("proof: ", printArgs(messageProof));
+  } catch (e) {
+    console.log("cannot get proof: ", e);
+  }
 }
 
 main().then(() => {
