@@ -1,7 +1,6 @@
 import { BridgeHelper } from "arb-ts";
-import { BigNumber } from "ethers";
-import yargs from "yargs";
 import { arbProvider, ethProvider, getBridge } from "../networks";
+import { parseMessageArgsAsBigNumber } from "../parser";
 import { printArgs } from "../printer";
 
 enum OutgoingMessageState {
@@ -23,28 +22,8 @@ enum OutgoingMessageState {
   EXECUTED = 3,
 }
 
-const argv = yargs
-  .option("batchNumber", {
-    alias: "n",
-    description: "Batch number including message",
-    type: "number",
-    demandOption: true,
-  })
-  .option("batchIndex", {
-    alias: "i",
-    description: "Message index in batch",
-    type: "number",
-    demandOption: true,
-  })
-  .help()
-  .alias("help", "h").argv as {
-  batchNumber: number;
-  batchIndex: number;
-};
-
 async function main() {
-  const batchNumber = BigNumber.from(argv.batchNumber);
-  const batchIndex = BigNumber.from(argv.batchIndex);
+  const { batchNumber, batchIndex } = parseMessageArgsAsBigNumber();
 
   const bridge = await getBridge();
 
