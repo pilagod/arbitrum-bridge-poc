@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { arbSigner, ethSigner, getBridge } from "../networks";
-import { printEventLog } from "../utils";
+import { printEventLog } from "../printer";
 
 async function main() {
   const bridge = await getBridge();

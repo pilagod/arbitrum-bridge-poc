@@ -2,6 +2,7 @@ import { BridgeHelper } from "arb-ts";
 import { BigNumber } from "ethers";
 import yargs from "yargs";
 import { arbProvider, ethProvider, getBridge } from "../networks";
+import { printArgs } from "../printer";
 
 enum OutgoingMessageState {
   /**
@@ -59,7 +60,7 @@ async function main() {
     batchIndex,
     arbProvider
   );
-  console.log("message: ", message);
+  console.log("message: ", message.map(printArgs));
 
   const messageState: OutgoingMessageState =
     await bridge.getOutGoingMessageState(batchNumber, batchIndex);
