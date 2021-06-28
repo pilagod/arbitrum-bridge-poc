@@ -1,22 +1,12 @@
 import { BigNumber } from "ethers";
-import yargs from "yargs";
 import { getBridge } from "../networks";
+import { parseMessageIdArgs } from "../parser";
 
 async function main() {
-  const argv = yargs
-    .option("msgNum", {
-      alias: "m",
-      description: "L1 Message unique id",
-      type: "number",
-      demandOption: true,
-    })
-    .help()
-    .alias("help", "h").argv as {
-    msgNum: number;
-  };
+  const { msgId } = parseMessageIdArgs();
   const bridge = await getBridge();
   const l2TxHash = await bridge.calculateL2RetryableTransactionHash(
-    BigNumber.from(argv.msgNum)
+    BigNumber.from(msgId)
   );
   console.log("L2 TxHash: ", l2TxHash);
 }

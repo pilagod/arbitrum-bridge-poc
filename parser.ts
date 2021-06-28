@@ -1,6 +1,20 @@
 import { BigNumber } from "ethers";
 import yargs from "yargs";
 
+export function parseMessageIdArgs() {
+  return yargs
+    .option("msgId", {
+      alias: "m",
+      description: "L1 message unique id",
+      type: "number",
+      demandOption: true,
+    })
+    .help()
+    .alias("help", "h").argv as {
+    msgId: number;
+  };
+}
+
 export function parseMessageArgs(): {
   batchNumber: number;
   batchIndex: number;
