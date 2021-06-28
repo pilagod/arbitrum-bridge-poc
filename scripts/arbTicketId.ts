@@ -8,7 +8,7 @@ async function main() {
   const l2TxHash = await bridge.calculateL2RetryableTransactionHash(
     BigNumber.from(msgId)
   );
-  console.log("L2 TxHash: ", l2TxHash);
+  console.log("L2 ticket id (a.k.a. tx hash): ", l2TxHash);
 }
 
 main().then(() => {

@@ -114,3 +114,18 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     ```sh
     yarn execute scripts/arbERC20Balance.ts 
     ```
+
+- arbTicketId
+
+    `arbTicketId` converts message unique id to ticket id.
+
+    ```sh
+    yarn execute scripts/arbTicketId.ts --help
+
+    Options:
+        --version  Show version number                           [boolean]
+    -m, --msgId    L1 message unique id                [number] [required]
+    -h, --help     Show help                                     [boolean]
+    
+    yarn execute scripts/arbTicketId.ts -m 47
+    ```
