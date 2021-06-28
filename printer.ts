@@ -1,4 +1,8 @@
-import { Event } from "ethers";
+import { BigNumberish, Event, ethers } from "ethers";
+
+export function printBalance(balance: BigNumberish): string {
+  return ethers.utils.formatUnits(balance);
+}
 
 export function printEventLog(log: Event) {
   return {
