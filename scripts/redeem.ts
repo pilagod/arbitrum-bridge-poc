@@ -1,13 +1,13 @@
 import { BigNumber } from "ethers";
 import { getBridge } from "../networks";
-import { parseMessageIdArgs } from "../parser";
+import { parseMessageNumArgs } from "../parser";
 import { printEventLog } from "../printer";
 
 async function main() {
-  const { msgId } = parseMessageIdArgs();
+  const { msgNum } = parseMessageNumArgs();
   const bridge = await getBridge();
   const ticketId = await bridge.calculateL2RetryableTransactionHash(
-    BigNumber.from(msgId)
+    BigNumber.from(msgNum)
   );
   console.log("ticket id: ", ticketId);
   const tx = await bridge.l2Bridge.arbRetryableTx.functions.redeem(ticketId);

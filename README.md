@@ -41,6 +41,8 @@ Command execution needs gas, please first get ETH to the wallet on Rinkeby  side
 
 Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and Arbitrum.
 
+### ETH
+
 - deposit
 
     `deposit` deposits `0.1 ETH` from Rinkeby to Arbitrum.
@@ -56,6 +58,8 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     ```sh
     yarn execute scripts/withdraw.ts
     ```
+
+### ERC20
 
 - mint
 
@@ -80,6 +84,45 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     ```sh
     yarn execute scripts/withdrawERC20.ts
     ```
+
+### Message
+
+- executeTransaction
+
+    `executeTransaction` executes message from L2 to L1.
+
+    `batchNumber` and `batchIndex` are required arguments, which encoded in events emitted from `withdraw` command.
+
+    ```sh
+    yarn execute scripts/executeTransaction.ts --help
+
+    Options:
+        --version      Show version number                       [boolean]
+    -n, --batchNumber  Batch number including message  [number] [required]
+    -i, --batchIndex   Message index in batch          [number] [required]
+    -h, --help         Show help                                 [boolean]
+
+    yarn execute scripts/executeTransaction.ts -n 47 -i 6
+    ```
+
+- redeem
+
+    `redeem` executes message from L1 to L2.
+
+    `msgNum` is a required argument, which encoded as `messageNum` in events emitted from `deposit` command.
+
+    ```sh
+    yarn execute scripts/redeem.ts --help
+
+    Options:
+        --version  Show version number                           [boolean]
+    -m, --msgNum   L1 message number                   [number] [required]
+    -h, --help     Show help                                     [boolean]
+
+    yarn execute scripts/redeem.ts -m 9990
+    ```
+
+### L2 State
 
 - arbMessage
 
@@ -119,7 +162,7 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
 
     `arbTicketId` converts message unique id to ticket id.
 
-    `msgNum` is required argument, which encoded as `messageNum` in events emitted from `deposit` command.
+    `msgNum` is a required argument, which encoded as `messageNum` in events emitted from `deposit` command.
 
     ```sh
     yarn execute scripts/arbTicketId.ts --help
@@ -129,5 +172,5 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     -m, --msgNum   L1 message number                   [number] [required]
     -h, --help     Show help                                     [boolean]
     
-    yarn execute scripts/arbTicketId.ts -m 47
+    yarn execute scripts/arbTicketId.ts -m 9990
     ```
