@@ -81,14 +81,14 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     yarn execute scripts/withdrawERC20.ts
     ```
 
-- message
+- arbMessage
 
-    `message` queries outgoing (Arbitrum to Rinkeby) message state.
+    `arbMessage` queries outgoing (Arbitrum to Rinkeby) message state.
 
     `batchNumber` and `batchIndex` are required arguments, which encoded in events emitted from `withdraw` command.
 
     ```sh
-    yarn execute scripts/message.ts --help
+    yarn execute scripts/arbMessage.ts --help
 
     Options:
         --version      Show version number                               [boolean]
@@ -96,7 +96,7 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     -i, --batchIndex   Message index in batch                  [number] [required]
     -h, --help         Show help                                         [boolean]
 
-    yarn execute scripts/message.ts -n 47 -i 6
+    yarn execute scripts/arbMessage.ts -n 47 -i 6
     ```
 
 - arbERC20Address
