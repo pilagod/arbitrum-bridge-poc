@@ -1,12 +1,12 @@
 import { BigNumber } from "ethers";
 import { getBridge } from "../networks";
-import { parseMessageIdArgs } from "../parser";
+import { parseMessageNumArgs } from "../parser";
 
 async function main() {
-  const { msgId } = parseMessageIdArgs();
+  const { msgNum } = parseMessageNumArgs();
   const bridge = await getBridge();
   const l2TxHash = await bridge.calculateL2RetryableTransactionHash(
-    BigNumber.from(msgId)
+    BigNumber.from(msgNum)
   );
   console.log("L2 ticket id (a.k.a. tx hash): ", l2TxHash);
 }

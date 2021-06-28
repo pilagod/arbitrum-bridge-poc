@@ -1,17 +1,17 @@
 import { BigNumber } from "ethers";
 import yargs from "yargs";
 
-export function parseMessageIdArgs() {
+export function parseMessageNumArgs() {
   return yargs
-    .option("msgId", {
+    .option("msgNum", {
       alias: "m",
-      description: "L1 message unique id",
+      description: "L1 message number",
       type: "number",
       demandOption: true,
     })
     .help()
     .alias("help", "h").argv as {
-    msgId: number;
+    msgNum: number;
   };
 }
 

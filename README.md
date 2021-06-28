@@ -119,12 +119,14 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
 
     `arbTicketId` converts message unique id to ticket id.
 
+    `msgNum` is required argument, which encoded as `messageNum` in events emitted from `deposit` command.
+
     ```sh
     yarn execute scripts/arbTicketId.ts --help
 
     Options:
         --version  Show version number                           [boolean]
-    -m, --msgId    L1 message unique id                [number] [required]
+    -m, --msgNum   L1 message number                   [number] [required]
     -h, --help     Show help                                     [boolean]
     
     yarn execute scripts/arbTicketId.ts -m 47
