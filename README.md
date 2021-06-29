@@ -42,6 +42,25 @@ Command execution needs gas, please first get ETH to the wallet on Rinkeby  side
 
 Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and Arbitrum.
 
+### Setup Local Node
+
+- setValidators
+
+    `setValidators` sets validators to rollup contract.
+
+    ```sh
+    yarn execute scripts/setValidators.ts --help
+
+    Options:
+        --version     Show version number                                [boolean]
+    -r, --rollup      Rollup address                           [string] [required]
+    -v, --validators  Validator addresses separated by comma 0x01,0x02
+                                                                [string] [required]
+    -h, --help        Show help                                          [boolean]
+
+    yarn execute scripts/setValidators.ts -r 0x2b39D5E8b1EFE16Fdb8ceD47c004733e345f4256 -v 0xf356cb4673c64e0928325029c9a628e9d16099a6,0xe6f31ad783a911b4c77d0c8429898aca788b9a9d
+    ```
+
 ### Balance
 
 - balance
