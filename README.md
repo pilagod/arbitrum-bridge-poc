@@ -67,7 +67,7 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
     `mint` mints `10 TKN` on Rinkeby, which is our ERC20 token for test.
 
     ```sh
-    yarn execute scripts/withdraw.ts 
+    yarn execute scripts/mint.ts 
     ```
 
 - depositERC20
