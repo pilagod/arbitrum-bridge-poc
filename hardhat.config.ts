@@ -9,13 +9,13 @@ import { networks } from "./networks";
 
 export default {
   networks: {
-    arbitrum: {
-      url: networks.arbitrum.url,
-      accounts: [networks.arbitrum.account.privateKey],
+    L1: {
+      url: networks.L1.url,
+      accounts: [networks.L1.account.privateKey],
     },
-    rinkeby: {
-      url: networks.rinkeby.url,
-      accounts: [networks.rinkeby.account.privateKey],
+    L2: {
+      url: networks.L2.url,
+      accounts: [networks.L2.account.privateKey],
     },
   },
   solidity: {
