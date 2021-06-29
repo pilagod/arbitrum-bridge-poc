@@ -42,6 +42,16 @@ Command execution needs gas, please first get ETH to the wallet on Rinkeby  side
 
 Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and Arbitrum.
 
+### Balance
+
+- balance
+
+    `balance` gets L1 and L2 balances.
+
+    ```sh
+    yarn execute scripts/balance.ts 
+    ```
+
 ### ETH
 
 - deposit
