@@ -28,7 +28,7 @@ There are 3 environment variables required in `.env` prior to executing commands
 
 - `WALLET_ADDRESS`: Rinkeby wallet address
 - `WALLET_PRIVATE_KEY`: Rinkeby wallet private key
-- `L1_RPC_URL`: L1 ethereum rpc url, e.g., localhost, [Alchemy](https://www.alchemy.com/) or [Infura](https://infura.io/)
+- `L1_RPC_URL`: L1 ethereum rpc url, e.g., localhost, [Alchemy](https://www.alchemy.com/) or [Infura](https://infura.io/) (**Only Rinkeby**)
 - `L2_RPC_URL`: L2 arbitrum rpc url, e.g., [https://rinkeby.arbitrum.io/rpc](https://rinkeby.arbitrum.io/rpc) (testnet)
 
 ### Prepare ETH
