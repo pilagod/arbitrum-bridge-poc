@@ -63,12 +63,20 @@ Commands transfer ETH or tokens back and forth to the same wallet on Rinkeby and
 
 ### Balance
 
-- balance
+- ethBalance
 
-    `balance` gets L1 and L2 balances.
+    `ethBalance` gets L1 and L2 ETH balances.
 
     ```sh
-    yarn execute scripts/balance.ts 
+    yarn execute scripts/ethBalance.ts 
+    ```
+
+- tknBalance
+
+    `tknBalance` gets L1 and L2 TKN balances.
+
+    ```sh
+    yarn execute scripts/tknBalance.ts
     ```
 
 ### ETH
