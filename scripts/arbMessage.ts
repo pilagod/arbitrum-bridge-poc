@@ -27,13 +27,17 @@ async function main() {
 
   const bridge = await getBridge();
 
-  const entry = await BridgeHelper.getOutboxEntry(
-    batchNumber,
-    await bridge.getOutboxAddress(),
-    ethProvider
-  );
-  console.log("entry: ", entry);
-
+   try {
+     const messageProof = await BridgeHelper.tryGetProofOnce(
+       batchNumber,
+       batchIndex,
+       arbProvider
+     );
+     console.log("proof: ", printArgs(messageProof));
+   } catch (e) {
+     console.log("cannot get proof: ", e);
+   }
+  
   const message = await BridgeHelper.getOutgoingMessage(
     batchNumber,
     batchIndex,
@@ -46,16 +50,13 @@ async function main() {
 
   console.log("message state:", OutgoingMessageState[messageState]);
 
-  try {
-    const messageProof = await BridgeHelper.tryGetProofOnce(
-      batchNumber,
-      batchIndex,
-      arbProvider
-    );
-    console.log("proof: ", printArgs(messageProof));
-  } catch (e) {
-    console.log("cannot get proof: ", e);
-  }
+
+  const entry = await BridgeHelper.getOutboxEntry(
+    batchNumber,
+    await bridge.getOutboxAddress(),
+    ethProvider
+  );
+  console.log("entry: ", entry);
 }
 
 main().then(() => {
