@@ -6,7 +6,9 @@
   "scripts": {
     "execute": "ts-node -r tsconfig-paths/register",
     "build": "rm -rf artifacts cache typechain && hardhat compile",
-    "deploy-rinkeby": "hardhat --network rinkeby deploy --no-compile"
+    "deploy-rinkeby": "hardhat --network rinkeby deploy --no-compile",
+    "migration:create": "db-migrate -e local create",
+    "migration:up": "db-migrate -e local up"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
@@ -22,6 +24,7 @@
     "arb-ts": "^0.0.19",
     "chai": "^4.3.4",
     "db-migrate": "^0.11.12",
+    "db-migrate-sqlite3": "^0.4.0",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.3.1",

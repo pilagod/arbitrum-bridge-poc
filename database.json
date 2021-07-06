@@ -1,6 +1,6 @@
 {
   "local": {
     "driver": "sqlite3",
-    "filename": "local.db"
+    "filename": "db/local.db"
   }
 }

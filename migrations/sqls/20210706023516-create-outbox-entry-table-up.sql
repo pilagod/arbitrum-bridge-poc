@@ -1,0 +1,8 @@
+CREATE TABLE outbox_entry (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    address VARCHAR(42) NOT NULL,
+    outbox_index INTEGER NOT NULL,
+    batch_number INTEGER NOT NULL,
+    batch_size INTEGER NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
