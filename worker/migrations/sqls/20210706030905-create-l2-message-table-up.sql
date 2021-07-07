@@ -6,8 +6,8 @@ CREATE TABLE l2_message (
     arb_block_number INTEGER INT NOT NULL,
     eth_block_number INTEGER NOT NULL,
     timestamp DATETIME NOT NULL,
-    call_value TEXT NOT NULL DEFAULT 0,
-    data TEXT,
+    call_value TEXT NOT NULL DEFAULT '0',
+    data TEXT NOT NULL DEFAULT '',
     status VARCHAR(36) NOT NULL, -- SENT, EXECUTABLE, DONE
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

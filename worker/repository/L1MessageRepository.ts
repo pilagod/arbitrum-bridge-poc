@@ -13,7 +13,7 @@ export default class L1MessageRepository {
       const conditionParams: any[] = [];
       if (query.status) {
         conditions.push(`status = ?`);
-        conditionParams.push(L1MessageStatus[query.status]);
+        conditionParams.push(query.status);
       }
       let sql = "SELECT * FROM l1_message";
       if (conditions.length > 0) {
@@ -42,20 +42,18 @@ export default class L1MessageRepository {
 
   public create(msg: L1Message): Promise<void> {
     return new Promise((resolve, reject) => {
-      const sql =
-        "INSERT INTO l1_message (msg_id, msg_data, l2_ticket_id, status) VALUES (?, ?, ?, ?)";
-      db.run(sql, [msg.msgId, msg.msgData, msg.l2TicketId, msg.status], (err) =>
-        err ? reject(err) : resolve()
+      db.run(
+        "INSERT INTO l1_message (msg_id, msg_data, l2_ticket_id, status) VALUES (?, ?, ?, ?)",
+        [msg.msgId, msg.msgData, msg.l2TicketId, msg.status],
+        (err) => (err ? reject(err) : resolve())
       );
     });
   }
 
   public update(msg: L1Message): Promise<void> {
     return new Promise((resolve, reject) => {
-      const sql =
-        "UPDATE l1_message SET msg_id = ?, msg_data = ?, l2_ticket_id = ?, status = ? WHERE id = ?";
       db.run(
-        sql,
+        "UPDATE l1_message SET msg_id = ?, msg_data = ?, l2_ticket_id = ?, status = ? WHERE id = ?",
         [msg.msgId, msg.msgData, msg.l2TicketId, msg.status, msg.id],
         (err) => (err ? reject(err) : resolve())
       );
