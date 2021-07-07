@@ -1,6 +1,6 @@
 .env
 artifacts
 cache
-db/*.db
+worker/db/*.db
 node_modules
 typechain

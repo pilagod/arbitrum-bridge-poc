@@ -13,6 +13,6 @@
       "@typechain": ["typechain"]
     }
   },
-  "include": ["*.ts", "artifacts", "deploy", "scripts"],
+  "include": ["*.ts", "artifacts", "deploy", "scripts", "worker"],
   "exclude": ["node_modules"]
 }

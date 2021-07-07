@@ -1,3 +1,4 @@
 {
-  "sql-file": true
+  "sql-file": true,
+  "migrations-dir": "./worker/migrations"
 }
