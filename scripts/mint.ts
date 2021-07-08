@@ -1,22 +1,22 @@
 import { ethers } from "ethers";
-import { ethTestToken } from "../contracts";
-import { ethSigner } from "../networks";
+import { EthTestToken } from "@contract";
+import { ethSigner } from "@network";
 
 async function main() {
   console.log(`Mint 10 TKN for Rin ${ethSigner.address}`);
   console.log(
     `Rin TKN balance before mint: ${ethers.utils.formatUnits(
-      await ethTestToken.balanceOf(ethSigner.address)
+      await EthTestToken.balanceOf(ethSigner.address)
     )}`
   );
-  const tx = await ethTestToken.mint(
+  const tx = await EthTestToken.mint(
     ethSigner.address,
     ethers.utils.parseEther("10")
   );
   await tx.wait();
   console.log(
     `Rin TKN balance after mint: ${ethers.utils.formatUnits(
-      await ethTestToken.balanceOf(ethSigner.address)
+      await EthTestToken.balanceOf(ethSigner.address)
     )}`
   );
   console.log("Mint success.");

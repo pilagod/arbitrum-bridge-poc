@@ -1,5 +1,5 @@
 import { BridgeHelper } from "arb-ts";
-import { arbProvider, ethProvider, getBridge } from "../networks";
+import { arbProvider, ethProvider, getBridge } from "@network";
 import { parseMessageArgsAsBigNumber } from "../parser";
 import { printArgs } from "../printer";
 
@@ -27,17 +27,17 @@ async function main() {
 
   const bridge = await getBridge();
 
-   try {
-     const messageProof = await BridgeHelper.tryGetProofOnce(
-       batchNumber,
-       batchIndex,
-       arbProvider
-     );
-     console.log("proof: ", printArgs(messageProof));
-   } catch (e) {
-     console.log("cannot get proof: ", e);
-   }
-  
+  try {
+    const messageProof = await BridgeHelper.tryGetProofOnce(
+      batchNumber,
+      batchIndex,
+      arbProvider
+    );
+    console.log("proof: ", printArgs(messageProof));
+  } catch (e) {
+    console.log("cannot get proof: ", e);
+  }
+
   const message = await BridgeHelper.getOutgoingMessage(
     batchNumber,
     batchIndex,
@@ -49,7 +49,6 @@ async function main() {
     await bridge.getOutGoingMessageState(batchNumber, batchIndex);
 
   console.log("message state:", OutgoingMessageState[messageState]);
-
 
   const entry = await BridgeHelper.getOutboxEntry(
     batchNumber,

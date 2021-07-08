@@ -1,17 +1,17 @@
-import { arbTestToken, ethTestToken } from "../contracts";
-import { arbSigner, ethSigner } from "../networks";
+import { ArbTestToken, EthTestToken } from "@contract";
+import { arbSigner, ethSigner } from "@network";
 import { printBalance } from "../printer";
 
 async function main() {
   console.log("---------");
   console.log(
     `Rin TKN balance: ${printBalance(
-      await ethTestToken.balanceOf(ethSigner.address)
+      await EthTestToken.balanceOf(ethSigner.address)
     )}`
   );
   console.log(
     `Arb TKN balance: ${printBalance(
-      await arbTestToken.balanceOf(arbSigner.address)
+      await ArbTestToken.balanceOf(arbSigner.address)
     )}`
   );
   console.log("----------");

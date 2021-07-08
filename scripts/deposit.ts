@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { arbSigner, ethSigner, getBridge } from "../networks";
+import { arbSigner, ethSigner, getBridge } from "@network";
 import { printBalance, printEventLog } from "../printer";
 
 async function main() {

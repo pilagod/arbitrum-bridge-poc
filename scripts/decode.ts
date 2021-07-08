@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import ArbSysABI from "../abi/arbsys";
-import { arbProvider } from "../networks";
+import ArbSysABI from "@abi/arbSys";
+import { arbProvider } from "@network";
 
 // withdraw 0.1 ETH at 2021/06/23 11:30:29 AM
 // arb block number: 104299

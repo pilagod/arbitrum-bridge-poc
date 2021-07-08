@@ -1,8 +1,8 @@
 import { BridgeHelper } from "arb-ts";
 import { Contract, ContractTransaction } from "ethers";
-import OutboxABI from "../abi/outbox";
-import { ethTestToken } from "../contracts";
-import { arbProvider, ethSigner, getBridge } from "../networks";
+import OutboxABI from "@abi/outbox";
+import { EthTestToken } from "@contract";
+import { arbProvider, ethSigner, getBridge } from "@network";
 import { parseMessageArgsAsBigNumber } from "../parser";
 import { printBalance, printEventLog } from "../printer";
 
@@ -30,7 +30,7 @@ async function main() {
   );
   console.log(
     `Rin TKN balance before execute: ${printBalance(
-      await ethTestToken.balanceOf(ethSigner.address)
+      await EthTestToken.balanceOf(ethSigner.address)
     )}`
   );
   const tx = (await outbox.executeTransaction(
@@ -54,7 +54,7 @@ async function main() {
   );
   console.log(
     `Rin TKN balance after execute: ${printBalance(
-      await ethTestToken.balanceOf(ethSigner.address)
+      await EthTestToken.balanceOf(ethSigner.address)
     )}`
   );
 }

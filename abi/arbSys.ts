@@ -100,6 +100,19 @@ export default [
   },
   {
     inputs: [],
+    name: "arbChainID",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "arbOSVersion",
     outputs: [
       {

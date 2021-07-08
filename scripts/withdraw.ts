@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { arbSigner, ethSigner, getBridge } from "../networks";
+import { arbSigner, ethSigner, getBridge } from "@network";
 import { printBalance, printEventLog } from "../printer";
 
 async function main() {
@@ -12,7 +12,9 @@ async function main() {
   const receipt = await tx.wait();
   const afterBalance = await arbSigner.getBalance();
   console.log(`Events: `, (receipt.events ?? []).map(printEventLog));
-  console.log(`Arb ETH balance before withdraw: ${printBalance(beforeBalance)}`);
+  console.log(
+    `Arb ETH balance before withdraw: ${printBalance(beforeBalance)}`
+  );
   console.log(`Arb ETH balance after withdraw: ${printBalance(afterBalance)}`);
   console.log(`Withdraw requested`);
 }

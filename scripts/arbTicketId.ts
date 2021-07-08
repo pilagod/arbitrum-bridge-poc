@@ -1,5 +1,5 @@
 import { BigNumber } from "ethers";
-import { getBridge } from "../networks";
+import { getBridge } from "@network";
 import { parseMessageNumArgs } from "../parser";
 
 async function main() {

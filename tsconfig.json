@@ -9,7 +9,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@abi/*": ["abi/*"],
+      "@contract": ["contract"],
       "@deployments/*": ["deployments/*"],
+      "@network": ["network"],
       "@typechain": ["typechain"]
     }
   },

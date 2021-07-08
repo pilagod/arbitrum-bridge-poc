@@ -1,7 +1,7 @@
-import { Contract, ContractTransaction, ethers } from "ethers";
+import { Contract, ContractTransaction } from "ethers";
 import yargs from "yargs";
-import RollupAdminFacetABI from "../abi/rollupAdminFacet";
-import { ethProvider } from "../networks";
+import RollupAdminFacetABI from "@abi/rollupAdminFacet";
+import { ethProvider } from "@network";
 import { printEventLog } from "../printer";
 
 async function main() {

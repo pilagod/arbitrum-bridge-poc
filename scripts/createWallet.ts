@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { ethProvider } from "../networks";
+import { ethProvider } from "@network";
 import { printBalance } from "../printer";
 
 async function main() {
