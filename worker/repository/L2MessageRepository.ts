@@ -3,26 +3,18 @@ import db from "../db";
 import { L2Message, L2MessageStatus } from "../model/L2Message";
 
 type L2MessageQuery = {
+  batchNumber?: BigNumber;
   status?: L2MessageStatus;
 };
 
 export default class L2MessageRepository {
   public findMany(query: L2MessageQuery): Promise<L2Message[]> {
     return new Promise((resolve, reject) => {
+      const { where, params } = toSqlQuery(query);
       const msgs: L2Message[] = [];
-      const conditions: string[] = [];
-      const conditionParams: any[] = [];
-      if (query.status) {
-        conditions.push(`status = ?`);
-        conditionParams.push(query.status);
-      }
-      let sql = "SELECT * FROM l2_message";
-      if (conditions.length > 0) {
-        sql += ` WHERE ${conditions.join(" AND ")}`;
-      }
       db.each(
-        sql,
-        conditionParams,
+        `SELECT * FROM l2_message${where ? ` WHERE ${where}` : ""}`,
+        params,
         (_, row) => msgs.push(toL2Message(row)),
         (err) => (err ? reject(err) : resolve(msgs))
       );
@@ -69,6 +61,26 @@ export default class L2MessageRepository {
       );
     });
   }
+}
+
+function toSqlQuery(query: L2MessageQuery): {
+  where: string;
+  params: any[];
+} {
+  const conditions: string[] = [];
+  const params: any[] = [];
+  if (query.batchNumber) {
+    conditions.push(`batch_number = ?`);
+    params.push(query.batchNumber.toString());
+  }
+  if (query.status) {
+    conditions.push(`status = ?`);
+    params.push(query.status);
+  }
+  return {
+    where: conditions.join(" AND "),
+    params,
+  };
 }
 
 function toL2Message(row: any): L2Message {

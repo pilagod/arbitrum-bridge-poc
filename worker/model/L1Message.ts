@@ -24,4 +24,19 @@ export class L1Message {
     this.id = id;
     this.createdAt = createdAt;
   }
+
+  public becomeRedeemed() {
+    this.transitStatus(L1MessageStatus.Done);
+  }
+
+  public becomeRetryable() {
+    this.transitStatus(L1MessageStatus.Retryable);
+  }
+
+  private transitStatus(to: L1MessageStatus) {
+    if (this.status === L1MessageStatus.Done) {
+      return;
+    }
+    this.status = to;
+  }
 }

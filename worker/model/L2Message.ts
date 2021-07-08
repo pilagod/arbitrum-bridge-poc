@@ -31,4 +31,19 @@ export class L2Message {
     this.data = data;
     this.createdAt = createdAt;
   }
+
+  public becomeExecutable() {
+    this.transitStatus(L2MessageStatus.Executable);
+  }
+
+  public becomeExecuted() {
+    this.transitStatus(L2MessageStatus.Done);
+  }
+
+  private transitStatus(status: L2MessageStatus) {
+    if (this.status === L2MessageStatus.Done) {
+      return;
+    }
+    this.status = status;
+  }
 }

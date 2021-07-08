@@ -3,6 +3,7 @@ import db from "../db";
 import { L1Message, L1MessageStatus } from "../model/L1Message";
 
 type L1MessageQuery = {
+  l2TicketId?: string;
   status?: L1MessageStatus;
 };
 
@@ -60,6 +61,10 @@ function toSqlQuery(query: L1MessageQuery): {
 } {
   const conditions: string[] = [];
   const params: any[] = [];
+  if (query.l2TicketId) {
+    conditions.push(`l2_ticket_id = ?`);
+    params.push(query.l2TicketId);
+  }
   if (query.status) {
     conditions.push(`status = ?`);
     params.push(query.status);
