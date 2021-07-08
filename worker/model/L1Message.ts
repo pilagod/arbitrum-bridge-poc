@@ -1,3 +1,5 @@
+import { BigNumber } from "ethers";
+
 export enum L1MessageStatus {
   Sent = "Sent",
   Retryable = "Retryable",
@@ -9,7 +11,7 @@ export class L1Message {
   public createdAt: Date;
 
   public constructor(
-    public msgId: number,
+    public msgId: BigNumber,
     public msgData: string,
     public l2TicketId: string,
     public status: L1MessageStatus,

@@ -1,6 +1,6 @@
 CREATE TABLE l1_message (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    msg_id INTEGER NOT NULL,
+    msg_id TEXT NOT NULL,
     msg_data TEXT NOT NULL,
     l2_ticket_id VARCHAR(66) NOT NULL,
     status VARCHAR(36) NOT NULL, -- SENT, RETRYABLE, DONE

@@ -1,3 +1,4 @@
+import { BigNumber } from "ethers";
 import db from "../db";
 import { L2Message, L2MessageStatus } from "../model/L2Message";
 
@@ -22,24 +23,7 @@ export default class L2MessageRepository {
       db.each(
         sql,
         conditionParams,
-        (_, row) =>
-          msgs.push(
-            new L2Message(
-              row.unique_id,
-              row.batch_number,
-              row.batch_index,
-              row.arb_block_number,
-              row.eth_block_number,
-              new Date(row.timestamp),
-              row.call_value,
-              row.status as L2MessageStatus,
-              {
-                id: row.id,
-                data: row.data,
-                createdAt: new Date(row.created_at),
-              }
-            )
-          ),
+        (_, row) => msgs.push(toL2Message(row)),
         (err) => (err ? reject(err) : resolve(msgs))
       );
     });
@@ -50,13 +34,13 @@ export default class L2MessageRepository {
       db.run(
         "INSERT INTO l2_message (unique_id, batch_number, batch_index, arb_block_number, eth_block_number, timestamp, call_value, data, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
-          msg.uniqueId,
-          msg.batchNumber,
-          msg.batchIndex,
-          msg.arbBlockNumber,
-          msg.ethBlockNumber,
+          msg.uniqueId.toString(),
+          msg.batchNumber.toString(),
+          msg.batchIndex.toString(),
+          msg.arbBlockNumber.toString(),
+          msg.ethBlockNumber.toString(),
           msg.timestamp,
-          msg.callValue,
+          msg.callValue.toString(),
           msg.data,
           msg.status,
         ],
@@ -70,13 +54,13 @@ export default class L2MessageRepository {
       db.run(
         "UPDATE l2_message SET unique_id = ?, batch_number = ?, batch_index = ?, arb_block_number = ?, eth_block_number = ?, timestamp = ?, call_value = ?, data = ?, status = ? WHERE id = ?",
         [
-          msg.uniqueId,
-          msg.batchNumber,
-          msg.batchIndex,
-          msg.arbBlockNumber,
-          msg.ethBlockNumber,
+          msg.uniqueId.toString(),
+          msg.batchNumber.toString(),
+          msg.batchIndex.toString(),
+          msg.arbBlockNumber.toString(),
+          msg.ethBlockNumber.toString(),
           msg.timestamp,
-          msg.callValue,
+          msg.callValue.toString(),
           msg.data,
           msg.status,
           msg.id,
@@ -85,4 +69,22 @@ export default class L2MessageRepository {
       );
     });
   }
+}
+
+function toL2Message(row: any): L2Message {
+  return new L2Message(
+    BigNumber.from(row.unique_id),
+    BigNumber.from(row.batch_number),
+    BigNumber.from(row.batch_index),
+    BigNumber.from(row.arb_block_number),
+    BigNumber.from(row.eth_block_number),
+    new Date(row.timestamp),
+    BigNumber.from(row.call_value),
+    row.status as L2MessageStatus,
+    {
+      id: row.id,
+      data: row.data,
+      createdAt: new Date(row.created_at),
+    }
+  );
 }

@@ -1,3 +1,5 @@
+import { BigNumber } from "ethers";
+
 export enum L2MessageStatus {
   Sent = "Sent",
   Executable = "Executable",
@@ -10,13 +12,13 @@ export class L2Message {
   public createdAt: Date;
 
   public constructor(
-    public uniqueId: number,
-    public batchNumber: number,
-    public batchIndex: number,
-    public arbBlockNumber: number,
-    public ethBlockNumber: number,
+    public uniqueId: BigNumber,
+    public batchNumber: BigNumber,
+    public batchIndex: BigNumber,
+    public arbBlockNumber: BigNumber,
+    public ethBlockNumber: BigNumber,
     public timestamp: Date,
-    public callValue: string,
+    public callValue: BigNumber,
     public status: L2MessageStatus,
     optionals: {
       id?: number;
