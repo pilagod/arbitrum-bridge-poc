@@ -1,12 +1,7 @@
 import { BigNumber, ethers } from "ethers";
-import {
-  ArbRetryableTx,
-  ArbSys,
-  EthTestToken,
-  L1ERC20Gateway,
-  Outbox,
-} from "@contract";
+import { ArbRetryableTx, ArbSys, L1ERC20Gateway, Outbox } from "@contract";
 import { arbSigner, ethSigner, getBridge } from "@network";
+import { withdraw } from "./action";
 import logger from "./logger";
 import { L1Message, L1MessageStatus } from "./model/L1Message";
 import { L2Message, L2MessageStatus } from "./model/L2Message";
@@ -20,7 +15,6 @@ export default async function watcher() {
   // L1
   L1ERC20Gateway.on("OutboundTransferInitiated", l1DepositMessageHandler);
   Outbox.on("OutboxEntryCreated", l2MessageExecutableHandler);
-  Outbox.on("OutBoxTransactionExecuted", deposit);
 
   // L2
   ArbRetryableTx.on("Redeemed", l1MessageRedeemedHandler);
@@ -28,29 +22,6 @@ export default async function watcher() {
   ArbSys.on("L2ToL1Transaction", l2WithdrawMessageHandler);
 
   logger.info("Watcher started");
-
-  // initialize first deposit
-  const l1MsgRepo = new L1MessageRepository();
-  const l1Msg = await l1MsgRepo.find();
-  if (!l1Msg) {
-    logger.info("Initialize first deposit");
-    await deposit();
-  }
-}
-
-async function deposit() {
-  logger.info(`Deposit 0.1 TKN from L1`);
-  const bridge = await getBridge();
-  await bridge.deposit(EthTestToken.address, ethers.utils.parseEther("0.1"));
-}
-
-async function withdraw() {
-  logger.info("Withdraw 0.1 TKN from L2");
-  const bridge = await getBridge();
-  await bridge.withdrawERC20(
-    EthTestToken.address,
-    ethers.utils.parseEther("0.1")
-  );
 }
 
 async function l1DepositMessageHandler(

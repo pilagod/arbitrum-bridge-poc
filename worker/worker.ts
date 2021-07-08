@@ -1,5 +1,6 @@
 import { Outbox } from "@contract";
 import { getBridge } from "@network";
+import { deposit } from "./action";
 import logger from "./logger";
 import { L1Message, L1MessageStatus } from "./model/L1Message";
 import { L2Message, L2MessageStatus } from "./model/L2Message";
@@ -11,6 +12,13 @@ const l2MsgRepo = new L2MessageRepository();
 
 export default async function worker(): Promise<void> {
   logger.info("Worker started");
+  // initialize first deposit
+  const l1MsgRepo = new L1MessageRepository();
+  const l1Msg = await l1MsgRepo.find();
+  if (!l1Msg) {
+    logger.info("Initialize first deposit");
+    await deposit();
+  }
   // if there are retryable messages from L1 to L2, redeem them
   const l1RetryableMsgs = await l1MsgRepo.findMany({
     status: L1MessageStatus.Retryable,
@@ -92,4 +100,6 @@ async function execute(l2Msgs: L2Message[]) {
     l2Msg.becomeExecuted();
     await l2MsgRepo.update(l2Msg);
   }
+  // deposit from L1 in response to withdraw from L2
+  await deposit();
 }
