@@ -38,7 +38,7 @@ Command execution needs gas, please first get ETH to the wallet on Rinkeby side.
 - [Rinkeby Authenticated Faucet](https://faucet.rinkeby.io/)
 - or anywhere else you know
 
-For Arbitrum side, after getting ETH on Rinkeby, you can deposit ETH via [Arbitrum Bridge](https://bridge.arbitrum.io/)
+For Arbitrum side, after getting ETH on Rinkeby, you can deposit ETH via [Arbitrum Bridge](https://bridge.arbitrum.io/).
 
 ## Worker PoC
 
