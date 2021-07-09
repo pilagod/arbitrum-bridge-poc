@@ -44,7 +44,7 @@ For Arbitrum side, after getting ETH on Rinkeby, you can deposit ETH via [Arbitr
 
 Worker is a process that automatically deposits ERC20 to L2 and withraws that ERC20 back to L1, again and again.
 
-Before running worker, you need to set your [environment variables](#environment-variables) in `.env`, mint `TKN` by script listed in following [ERC20](#erc20) section, and setup local database (sqlite) via command below:
+Before running worker, you need to set your [environment variables](#environment-variables) in `.env`, mint `TKN` by script listed in [Commands > ERC20](#erc20) section, and setup local database (sqlite) via command below:
 
 ```sh
 # creates `local.db` under `worker/db` directory:
