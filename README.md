@@ -33,10 +33,31 @@ There are 3 environment variables required in `.env` prior to executing commands
 
 ### Prepare ETH
 
-Command execution needs gas, please first get ETH to the wallet on Rinkeby  side.
+Command execution needs gas, please first get ETH to the wallet on Rinkeby side.
 
 - [Rinkeby Authenticated Faucet](https://faucet.rinkeby.io/)
 - or anywhere else you know
+
+For Arbitrum side, after getting ETH on Rinkeby, you can deposit ETH via [Arbitrum Bridge](https://bridge.arbitrum.io/)
+
+## Worker PoC
+
+Worker is a process that automatically deposits ERC20 to L2 and withraws that ERC20 back to L1, again and again.
+
+Before running worker, you need to set [environment variables](#environment-variables), mint `TKN` by script listed in [Commands/ERC20](#erc20) section, and setup local database (sqlite) via command below:
+
+```sh
+# creates `local.db` under `worker/db` directory:
+yarn migration:up
+```
+
+After all settings are done, simply run command below to start a worker:
+
+```sh
+yarn execute worker
+```
+
+Worker writes logs into `worker/worker.log`, get there to see what happen inside the worker.
 
 ## Commands
 
