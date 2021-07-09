@@ -47,7 +47,7 @@ Worker is a process that automatically deposits ERC20 to L2 and withraws that ER
 Before running worker, you need to set your [environment variables](#environment-variables) in `.env`, mint `TKN` by script listed in [Commands > ERC20](#erc20) section, and setup local database (sqlite) via command below:
 
 ```sh
-# creates `local.db` under `worker/db` directory:
+# creates `local.db` under `worker/db` directory
 yarn migration:up
 ```
 
