@@ -20,7 +20,7 @@ export const EthTestToken = new ethers.Contract(
   TestTokenAddress,
   TestTokenABI,
   ethSigner
-) as TestToken;
+) as unknown as TestToken;
 
 export const Inbox = new ethers.Contract(
   "0x578BAde599406A8fE3d24Fd7f7211c0911F5B29e",
@@ -58,7 +58,7 @@ export const ArbTestToken = new ethers.Contract(
   "0xD407792A878E1225cf10221003074372b457d165",
   TestTokenABI,
   arbSigner
-) as TestToken;
+) as unknown as TestToken;
 
 export const L2ERC20Gateway = new ethers.Contract(
   "0x195C107F3F75c4C93Eba7d9a1312F19305d6375f",
