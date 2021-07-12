@@ -5,7 +5,7 @@ import "@typechain/hardhat";
 import "hardhat-deploy";
 import "tsconfig-paths/register";
 
-import { networks } from "./networks";
+import { networks } from "./network";
 
 export default {
   networks: {
